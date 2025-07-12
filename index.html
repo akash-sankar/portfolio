@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash Sankaranarayanan - Academic Portfolio</title>
+    <meta name="description" content="Academic portfolio of Akash Sankaranarayanan, Electronics & Communication Engineering student at PSG College of Technology">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with navigation and theme toggle -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>Akash Sankaranarayanan</h1>
+            </div>
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main content wrapper for PDF generation -->
+    <div id="content-wrapper">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Akash Sankaranarayanan</h1>
+                        <p class="hero-subtitle">Electronics & Communication Engineering Student</p>
+                        <p class="hero-tagline">"Solving real-world problems with curiosity and process-driven precision."</p>
+                        <div class="hero-details">
+                            <p><strong>Degree:</strong> B.E. in Electronics and Communication Engineering (2026)</p>
+                            <p><strong>Institution:</strong> PSG College of Technology, Coimbatore</p>
+                        </div>
+                        <div class="contact-links">
+                            <a href="https://www.linkedin.com/in/akash-sankar-" target="_blank" class="contact-link">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="mailto:akash.gvkts@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i> akash.gvkts@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user"></i>
+                            <p>Photo Placeholder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <p class="about-text">
+                        I am a dedicated Electronics & Communication Engineering student at PSG College of Technology, 
+                        passionate about leveraging technology to solve complex real-world challenges. My academic journey 
+                        is driven by curiosity and a systematic approach to problem-solving.
+                    </p>
+                    <div class="interests">
+                        <h3>Areas of Interest</h3>
+                        <div class="interest-tags">
+                            <span class="tag">Digital Electronics</span>
+                            <span class="tag">Embedded Systems</span>
+                            <span class="tag">Computer Networks</span>
+                            <span class="tag">Wireless LAN</span>
+                            <span class="tag">Data Structures & Algorithms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Indoor Rover with SLAM-Based Mapping</h3>
+                            <span class="domain-tag robotics">Robotics / Embedded Systems</span>
+                        </div>
+                        <p class="project-description">
+                            Development of an autonomous indoor navigation system using Simultaneous Localization 
+                            and Mapping (SLAM) algorithms for real-time environment mapping and path planning.
+                        </p>
+                        <a href="#" class="view-document-link" data-project="indoor-rover" data-type="report">
+                            <i class="fas fa-file-pdf"></i> View Report
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Analysis of Multiple VAPs</h3>
+                            <span class="domain-tag networking">WLAN / Networking</span>
+                        </div>
+                        <p class="project-description">
+                            Comprehensive analysis of Virtual Access Points (VAPs) in wireless networks, 
+                            examining performance metrics, security implications, and optimization strategies.
+                        </p>
+                        <a href="#" class="view-document-link" data-project="vaps-analysis" data-type="report">
+                            <i class="fas fa-file-pdf"></i> View Report
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Design and Implementation of Audio Preamplifier</h3>
+                            <span class="domain-tag analog">Analog Electronics</span>
+                        </div>
+                        <p class="project-description">
+                            Design and implementation of a high-fidelity audio preamplifier circuit with 
+                            optimized gain characteristics and minimal noise for professional audio applications.
+                        </p>
+                        <a href="#" class="view-document-link" data-project="audio-preamp" data-type="report">
+                            <i class="fas fa-file-pdf"></i> View Report
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Design and Development of a Pacemaker Circuit</h3>
+                            <span class="domain-tag biomedical">Biomedical / Analog ICs</span>
+                        </div>
+                        <p class="project-description">
+                            Development of a cardiac pacemaker circuit using analog integrated circuits, 
+                            incorporating safety mechanisms and regulatory compliance for biomedical applications.
+                        </p>
+                        <a href="#" class="view-document-link" data-project="pacemaker" data-type="report">
+                            <i class="fas fa-file-pdf"></i> View Report
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Streetlight Control System</h3>
+                            <span class="domain-tag iot">IoT / Energy Saving</span>
+                        </div>
+                        <p class="project-description">
+                            IoT-based intelligent streetlight control system implementing motion detection 
+                            and ambient light sensing for optimized energy consumption and cost reduction.
+                        </p>
+                        <a href="#" class="view-document-link" data-project="streetlight" data-type="report">
+                            <i class="fas fa-file-pdf"></i> View Report
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">C</span>
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">Verilog HDL</span>
+                            <span class="skill-item">MATLAB</span>
+                            <span class="skill-item">Scilab</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Tools & Software</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Cadence Virtuoso</span>
+                            <span class="skill-item">Xilinx Vivado</span>
+                            <span class="skill-item">OpenWrt</span>
+                            <span class="skill-item">Keil µVision</span>
+                            <span class="skill-item">LTspice</span>
+                            <span class="skill-item">Wireshark</span>
+                            <span class="skill-item">Cisco Packet Tracer</span>
+                            <span class="skill-item">ROS2 (Basics)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Platforms</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Windows</span>
+                            <span class="skill-item">Linux</span>
+                            <span class="skill-item">macOS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internships Section -->
+        <section id="internships" class="internships">
+            <div class="container">
+                <h2 class="section-title">Internships</h2>
+                <div class="internship-item">
+                    <div class="internship-header">
+                        <h3>Scilab Toolbox Developer</h3>
+                        <span class="duration">November 2024 – Present</span>
+                    </div>
+                    <div class="organization">Control Systems IIT Bombay (FOSSEE Project)</div>
+                    <p class="internship-description">
+                        Working on mirroring Octave's control system functions into Scilab to ensure compatibility 
+                        and portability of code across platforms. Contributing to open-source scientific computing 
+                        tools and enhancing cross-platform functionality for control systems applications.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Milestones Section -->
+        <section id="milestones" class="milestones">
+            <div class="container">
+                <h2 class="section-title">Milestones</h2>
+                
+                <div class="milestone-category">
+                    <h3>Workshops Attended</h3>
+                    <div class="milestone-items">
+                        <div class="milestone-item">
+                            <h4>STM32 Workshop</h4>
+                            <p>PSG Tech & VAct Technologies (October 2023)</p>
+                        </div>
+                        <div class="milestone-item">
+                            <h4>Basics of ROS2 Workshop</h4>
+                            <p>PSG Tech & Karthikesh Robotics (March 2025)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="milestone-category">
+                    <h3>Academic Achievements</h3>
+                    <div class="milestone-items">
+                        <div class="milestone-item">
+                            <h4>Finalist in Danfoss Innovation Award 2024–25</h4>
+                            <p>Recognized for innovative engineering solutions</p>
+                        </div>
+                        <div class="milestone-item">
+                            <h4>1st Place in TECHATHLON 2023</h4>
+                            <p>PSG Tech (Decibel Events)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="milestone-category">
+                    <h3>Courses & Certifications</h3>
+                    <div class="milestone-items">
+                        <div class="milestone-item">
+                            <h4>System Verification Techniques and Methodologies</h4>
+                            <p>Qualcomm, 1 credit, A Grade</p>
+                            <a href="#" class="view-document-link" data-project="qualcomm-verification" data-type="certificate">
+                                <i class="fas fa-certificate"></i> View Certificate
+                            </a>
+                        </div>
+                        <div class="milestone-item">
+                            <h4>Python for Data Science</h4>
+                            <p>NPTEL</p>
+                            <a href="#" class="view-document-link" data-project="nptel-python" data-type="certificate">
+                                <i class="fas fa-certificate"></i> View Certificate
+                            </a>
+                        </div>
+                        <div class="milestone-item">
+                            <h4>System Design Through Verilog</h4>
+                            <p>NPTEL</p>
+                            <a href="#" class="view-document-link" data-project="nptel-verilog" data-type="certificate">
+                                <i class="fas fa-certificate"></i> View Certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="milestone-category">
+                    <h3>Extracurricular Activities</h3>
+                    <div class="milestone-items">
+                        <div class="milestone-item">
+                            <h4>Design Team Lead, Astronomy Club</h4>
+                            <p>PSG College of Technology</p>
+                        </div>
+                        <div class="milestone-item">
+                            <h4>Organizer of ASTROPALLETTE Online Art Competition</h4>
+                            <p>Astronomy Club, PSG College of Technology</p>
+                        </div>
+                        <div class="milestone-item">
+                            <h4>Executive Member, Astronomy Club</h4>
+                            <p>PSG College of Technology</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-content">
+                    <p class="contact-text">
+                        I'm always open to discussing new opportunities, collaborations, or interesting projects. 
+                        Feel free to reach out!
+                    </p>
+                    <a href="mailto:akash.gvkts@gmail.com" class="contact-email">
+                        <i class="fas fa-envelope"></i> akash.gvkts@gmail.com
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Akash Sankaranarayanan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Document Viewer Modal -->
+    <div id="document-viewer-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="document-title">Document Viewer</h3>
+                <div class="modal-controls">
+                    <button id="download-document" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button id="close-modal" class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="document-loading" class="loading-message">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading document...</p>
+                </div>
+                <div id="document-error" class="error-message" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Document not found. Please contact for the document.</p>
+                </div>
+                <iframe id="document-frame" class="document-frame" style="display: none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
