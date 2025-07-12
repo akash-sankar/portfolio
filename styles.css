@@ -314,12 +314,13 @@ section:nth-child(even) {
 .profile-photo {
   width: 250px;
   height: 250px;
-  border-radius: 50%;
+  border-radius: 50% !important;
   object-fit: cover;
   border: 4px solid var(--primary-color);
   box-shadow: var(--shadow-medium);
   transition: all var(--transition-normal);
   background: var(--background-tertiary);
+  display: block;
 }
 
 .profile-photo:hover {
@@ -415,17 +416,17 @@ section:nth-child(even) {
   white-space: nowrap;
 }
 
-.domain-tag.robotics { background: #e8f5e8; color: #27ae60; }
-.domain-tag.networking { background: #e3f2fd; color: #2196f3; }
-.domain-tag.analog { background: #fff3e0; color: #ff9800; }
-.domain-tag.biomedical { background: #fce4ec; color: #e91e63; }
-.domain-tag.iot { background: #f3e5f5; color: #9c27b0; }
+.domain-tag.robotics { background: #e8f5e8 !important; color: #27ae60 !important; }
+.domain-tag.networking { background: #e3f2fd !important; color: #2196f3 !important; }
+.domain-tag.analog { background: #fff3e0 !important; color: #ff9800 !important; }
+.domain-tag.biomedical { background: #fce4ec !important; color: #e91e63 !important; }
+.domain-tag.iot { background: #f3e5f5 !important; color: #9c27b0 !important; }
 
-[data-theme="dark"] .domain-tag.robotics { background: #1b5e20; color: #66bb6a; }
-[data-theme="dark"] .domain-tag.networking { background: #0d47a1; color: #42a5f5; }
-[data-theme="dark"] .domain-tag.analog { background: #e65100; color: #ffb74d; }
-[data-theme="dark"] .domain-tag.biomedical { background: #880e4f; color: #f48fb1; }
-[data-theme="dark"] .domain-tag.iot { background: #4a148c; color: #ce93d8; }
+[data-theme="dark"] .domain-tag.robotics { background: #1b5e20 !important; color: #66bb6a !important; }
+[data-theme="dark"] .domain-tag.networking { background: #0d47a1 !important; color: #42a5f5 !important; }
+[data-theme="dark"] .domain-tag.analog { background: #e65100 !important; color: #ffb74d !important; }
+[data-theme="dark"] .domain-tag.biomedical { background: #880e4f !important; color: #f48fb1 !important; }
+[data-theme="dark"] .domain-tag.iot { background: #4a148c !important; color: #ce93d8 !important; }
 
 .project-description {
   color: var(--text-secondary);
