@@ -136,7 +136,7 @@ class AkashPortfolio {
         
         // Check if document exists (this is a simulation)
         // In a real implementation, you would check if the file exists
-        const documentExists = false; // Set to true when you have actual documents
+        const documentExists = true; // Set to true when you have actual documents
         
         setTimeout(() => {
             if (documentExists) {
