@@ -47,6 +47,9 @@ portfolio/
 ├── script.js               # JavaScript functionality
 ├── README.md               # Main documentation
 ├── DOCUMENTS_GUIDE.md      # Document management guide
+├── PHOTO_GUIDE.md          # Profile photo setup guide
+├── images/                 # Profile photo directory
+│   └── README.md          # Instructions for adding photo
 ├── reports/                # Project reports (PDF files)
 │   └── README.md          # Instructions for adding reports
 └── certificates/           # Course certificates (PDF files)
@@ -239,7 +242,27 @@ The portfolio includes a sophisticated document viewer for project reports and c
 
 **See `DOCUMENTS_GUIDE.md` for detailed instructions.**
 
-## 🚀 Deployment Options
+## � Profile Photo Setup
+
+The portfolio includes a professional circular profile photo display.
+
+### Quick Setup
+1. **Add your photo** to the `images/` directory as `profile-photo.jpg`
+2. **Photo requirements**:
+   - Format: JPG, PNG, or WebP
+   - Size: At least 500x500 pixels (square recommended)
+   - File size: Under 2MB for web performance
+3. **Professional styling** automatically applied (circular crop, hover effects, responsive design)
+
+### Multiple Methods Available
+- **Local file** (recommended for reliability)
+- **External URL** (LinkedIn, Google Drive, etc.)
+- **Different formats** (PNG, WebP, multiple format support)
+- **Temporary alternatives** (initials, generated avatars)
+
+**See `PHOTO_GUIDE.md` for comprehensive setup instructions and customization options.**
+
+## �🚀 Deployment Options
 
 ### Static Hosting (Recommended)
 - **GitHub Pages**: Push to repository, enable Pages in settings
