@@ -6,9 +6,8 @@ class AkashPortfolio {
 
     init() {
         this.setupThemeToggle();
-        this.setupPDFDownload();
         this.setupScrollAnimations();
-        this.setupProjectDownloads();
+        this.setupDocumentViewer();
         this.setupSmoothScrolling();
         this.applyStoredTheme();
     }
@@ -46,62 +45,167 @@ class AkashPortfolio {
         themeIcon.className = storedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     }
 
-    // PDF Download Functionality
-    setupPDFDownload() {
-        const downloadBtn = document.getElementById('download-pdf');
+    // Document Viewer Functionality
+    setupDocumentViewer() {
+        const documentLinks = document.querySelectorAll('.view-document-link');
+        const modal = document.getElementById('document-viewer-modal');
+        const closeBtn = document.getElementById('close-modal');
+        const downloadBtn = document.getElementById('download-document');
+        const documentFrame = document.getElementById('document-frame');
+        const documentTitle = document.getElementById('document-title');
+        const loadingMessage = document.getElementById('document-loading');
+        const errorMessage = document.getElementById('document-error');
         
+        // Track current document for download
+        this.currentDocument = null;
+        
+        // Setup document links
+        documentLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectName = link.getAttribute('data-project');
+                const documentType = link.getAttribute('data-type');
+                this.openDocument(projectName, documentType);
+            });
+        });
+        
+        // Close modal functionality
+        closeBtn.addEventListener('click', () => {
+            this.closeModal();
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                this.closeModal();
+            }
+        });
+        
+        // Download functionality
         downloadBtn.addEventListener('click', () => {
-            this.generatePDF();
+            this.downloadCurrentDocument();
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                this.closeModal();
+            }
         });
     }
-
-    generatePDF() {
-        const element = document.getElementById('content-wrapper');
-        const downloadBtn = document.getElementById('download-pdf');
+    
+    openDocument(projectName, documentType) {
+        const modal = document.getElementById('document-viewer-modal');
+        const documentFrame = document.getElementById('document-frame');
+        const documentTitle = document.getElementById('document-title');
+        const loadingMessage = document.getElementById('document-loading');
+        const errorMessage = document.getElementById('document-error');
         
-        // Show loading state
-        const originalText = downloadBtn.innerHTML;
-        downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
-        downloadBtn.disabled = true;
+        // Show modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
         
-        // PDF generation options
-        const opt = {
-            margin: [0.5, 0.5, 0.5, 0.5],
-            filename: 'Akash_Sankaranarayanan_Portfolio.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { 
-                scale: 2,
-                useCORS: true,
-                letterRendering: true,
-                allowTaint: false
-            },
-            jsPDF: { 
-                unit: 'in', 
-                format: 'a4', 
-                orientation: 'portrait',
-                putOnlyUsedFonts: true,
-                floatPrecision: 16
-            },
-            pagebreak: { 
-                mode: ['avoid-all', 'css', 'legacy'],
-                avoid: ['.project-card', '.skill-category', '.milestone-item']
-            }
+        // Reset state
+        documentFrame.style.display = 'none';
+        errorMessage.style.display = 'none';
+        loadingMessage.style.display = 'flex';
+        
+        // Set title
+        const documentTitles = this.getDocumentTitles();
+        const title = documentTitles[projectName] || 'Document';
+        documentTitle.textContent = `${title} - ${documentType.charAt(0).toUpperCase() + documentType.slice(1)}`;
+        
+        // Store current document info
+        this.currentDocument = {
+            projectName: projectName,
+            documentType: documentType,
+            title: title
         };
-
-        // Generate PDF
-        html2pdf().set(opt).from(element).save().then(() => {
-            // Reset button state
-            downloadBtn.innerHTML = originalText;
-            downloadBtn.disabled = false;
-            
-            // Show success message
-            this.showNotification('PDF downloaded successfully!', 'success');
-        }).catch((error) => {
-            console.error('PDF generation failed:', error);
-            downloadBtn.innerHTML = originalText;
-            downloadBtn.disabled = false;
-            this.showNotification('PDF generation failed. Please try again.', 'error');
-        });
+        
+        // Try to load document
+        this.loadDocument(projectName, documentType);
+    }
+    
+    loadDocument(projectName, documentType) {
+        const documentFrame = document.getElementById('document-frame');
+        const loadingMessage = document.getElementById('document-loading');
+        const errorMessage = document.getElementById('document-error');
+        
+        // Construct document URL
+        const documentUrl = this.getDocumentUrl(projectName, documentType);
+        
+        // Check if document exists (this is a simulation)
+        // In a real implementation, you would check if the file exists
+        const documentExists = false; // Set to true when you have actual documents
+        
+        setTimeout(() => {
+            if (documentExists) {
+                // Load the document
+                documentFrame.src = documentUrl;
+                documentFrame.onload = () => {
+                    loadingMessage.style.display = 'none';
+                    documentFrame.style.display = 'block';
+                };
+            } else {
+                // Show error message
+                loadingMessage.style.display = 'none';
+                errorMessage.style.display = 'flex';
+            }
+        }, 1000); // Simulate loading time
+    }
+    
+    getDocumentUrl(projectName, documentType) {
+        // Construct URL based on document type
+        const baseUrl = documentType === 'certificate' ? './certificates/' : './reports/';
+        return `${baseUrl}${projectName}.pdf`;
+    }
+    
+    downloadCurrentDocument() {
+        if (!this.currentDocument) return;
+        
+        const { projectName, documentType, title } = this.currentDocument;
+        const documentUrl = this.getDocumentUrl(projectName, documentType);
+        
+        // Create download link
+        const link = document.createElement('a');
+        link.href = documentUrl;
+        link.download = `${title}_${documentType}.pdf`;
+        link.style.display = 'none';
+        
+        // Add to document and click
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Show notification
+        this.showNotification(`Download initiated for ${title} ${documentType}`, 'info');
+    }
+    
+    closeModal() {
+        const modal = document.getElementById('document-viewer-modal');
+        const documentFrame = document.getElementById('document-frame');
+        
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        
+        // Clear iframe
+        documentFrame.src = '';
+        
+        // Reset current document
+        this.currentDocument = null;
+    }
+    
+    getDocumentTitles() {
+        return {
+            'indoor-rover': 'Indoor Rover with SLAM-Based Mapping',
+            'vaps-analysis': 'Analysis of Multiple VAPs',
+            'audio-preamp': 'Audio Preamplifier Design',
+            'pacemaker': 'Pacemaker Circuit Development',
+            'streetlight': 'Streetlight Control System',
+            'qualcomm-verification': 'System Verification Techniques',
+            'nptel-python': 'Python for Data Science',
+            'nptel-verilog': 'System Design Through Verilog'
+        };
     }
 
     // Scroll Animations using Intersection Observer
@@ -142,42 +246,7 @@ class AkashPortfolio {
         });
     }
 
-    // Project Download Functionality (Placeholder)
-    setupProjectDownloads() {
-        const downloadLinks = document.querySelectorAll('.download-link');
-        
-        downloadLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const projectName = link.getAttribute('data-project');
-                this.handleProjectDownload(projectName);
-            });
-        });
-    }
 
-    handleProjectDownload(projectName) {
-        // This is a placeholder function
-        // In a real implementation, you would fetch the actual PDF file
-        const projectTitles = {
-            'indoor-rover': 'Indoor Rover with SLAM-Based Mapping',
-            'vaps-analysis': 'Analysis of Multiple VAPs',
-            'audio-preamp': 'Design and Implementation of Audio Preamplifier',
-            'pacemaker': 'Design and Development of a Pacemaker Circuit',
-            'streetlight': 'Streetlight Control System'
-        };
-
-        const title = projectTitles[projectName] || 'Project Report';
-        
-        // Show notification (replace with actual download logic)
-        this.showNotification(
-            `Download for "${title}" is not available yet. Please contact directly for the report.`, 
-            'info'
-        );
-
-        // Example of how you would implement actual download:
-        // const downloadUrl = `/reports/${projectName}.pdf`;
-        // window.open(downloadUrl, '_blank');
-    }
 
     // Smooth Scrolling for Navigation
     setupSmoothScrolling() {

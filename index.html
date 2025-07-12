@@ -7,7 +7,6 @@
     <meta name="description" content="Academic portfolio of Akash Sankaranarayanan, Electronics & Communication Engineering student at PSG College of Technology">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <!-- Header with navigation and theme toggle -->
@@ -19,9 +18,6 @@
             <div class="nav-controls">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
-                </button>
-                <button id="download-pdf" class="download-btn">
-                    <i class="fas fa-download"></i> Download as PDF
                 </button>
             </div>
         </nav>
@@ -45,8 +41,8 @@
                             <a href="https://www.linkedin.com/in/akash-sankar-" target="_blank" class="contact-link">
                                 <i class="fab fa-linkedin"></i> LinkedIn
                             </a>
-                            <a href="mailto:akash.ktsn@gmail.com" class="contact-link">
-                                <i class="fas fa-envelope"></i> akash.ktsn@gmail.com
+                            <a href="mailto:akash.gvkts@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i> akash.gvkts@gmail.com
                             </a>
                         </div>
                     </div>
@@ -98,8 +94,8 @@
                             Development of an autonomous indoor navigation system using Simultaneous Localization 
                             and Mapping (SLAM) algorithms for real-time environment mapping and path planning.
                         </p>
-                        <a href="#" class="download-link" data-project="indoor-rover">
-                            <i class="fas fa-file-pdf"></i> Download Report
+                        <a href="#" class="view-document-link" data-project="indoor-rover" data-type="report">
+                            <i class="fas fa-file-pdf"></i> View Report
                         </a>
                     </div>
                     
@@ -112,8 +108,8 @@
                             Comprehensive analysis of Virtual Access Points (VAPs) in wireless networks, 
                             examining performance metrics, security implications, and optimization strategies.
                         </p>
-                        <a href="#" class="download-link" data-project="vaps-analysis">
-                            <i class="fas fa-file-pdf"></i> Download Report
+                        <a href="#" class="view-document-link" data-project="vaps-analysis" data-type="report">
+                            <i class="fas fa-file-pdf"></i> View Report
                         </a>
                     </div>
                     
@@ -126,8 +122,8 @@
                             Design and implementation of a high-fidelity audio preamplifier circuit with 
                             optimized gain characteristics and minimal noise for professional audio applications.
                         </p>
-                        <a href="#" class="download-link" data-project="audio-preamp">
-                            <i class="fas fa-file-pdf"></i> Download Report
+                        <a href="#" class="view-document-link" data-project="audio-preamp" data-type="report">
+                            <i class="fas fa-file-pdf"></i> View Report
                         </a>
                     </div>
                     
@@ -140,8 +136,8 @@
                             Development of a cardiac pacemaker circuit using analog integrated circuits, 
                             incorporating safety mechanisms and regulatory compliance for biomedical applications.
                         </p>
-                        <a href="#" class="download-link" data-project="pacemaker">
-                            <i class="fas fa-file-pdf"></i> Download Report
+                        <a href="#" class="view-document-link" data-project="pacemaker" data-type="report">
+                            <i class="fas fa-file-pdf"></i> View Report
                         </a>
                     </div>
                     
@@ -154,8 +150,8 @@
                             IoT-based intelligent streetlight control system implementing motion detection 
                             and ambient light sensing for optimized energy consumption and cost reduction.
                         </p>
-                        <a href="#" class="download-link" data-project="streetlight">
-                            <i class="fas fa-file-pdf"></i> Download Report
+                        <a href="#" class="view-document-link" data-project="streetlight" data-type="report">
+                            <i class="fas fa-file-pdf"></i> View Report
                         </a>
                     </div>
                 </div>
@@ -262,14 +258,23 @@
                         <div class="milestone-item">
                             <h4>System Verification Techniques and Methodologies</h4>
                             <p>Qualcomm, 1 credit, A Grade</p>
+                            <a href="#" class="view-document-link" data-project="qualcomm-verification" data-type="certificate">
+                                <i class="fas fa-certificate"></i> View Certificate
+                            </a>
                         </div>
                         <div class="milestone-item">
                             <h4>Python for Data Science</h4>
                             <p>NPTEL</p>
+                            <a href="#" class="view-document-link" data-project="nptel-python" data-type="certificate">
+                                <i class="fas fa-certificate"></i> View Certificate
+                            </a>
                         </div>
                         <div class="milestone-item">
                             <h4>System Design Through Verilog</h4>
                             <p>NPTEL</p>
+                            <a href="#" class="view-document-link" data-project="nptel-verilog" data-type="certificate">
+                                <i class="fas fa-certificate"></i> View Certificate
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -303,8 +308,8 @@
                         I'm always open to discussing new opportunities, collaborations, or interesting projects. 
                         Feel free to reach out!
                     </p>
-                    <a href="mailto:akash.ktsn@gmail.com" class="contact-email">
-                        <i class="fas fa-envelope"></i> akash.ktsn@gmail.com
+                    <a href="mailto:akash.gvkts@gmail.com" class="contact-email">
+                        <i class="fas fa-envelope"></i> akash.gvkts@gmail.com
                     </a>
                 </div>
             </div>
@@ -317,6 +322,34 @@
             <p>&copy; 2024 Akash Sankaranarayanan. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Document Viewer Modal -->
+    <div id="document-viewer-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="document-title">Document Viewer</h3>
+                <div class="modal-controls">
+                    <button id="download-document" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button id="close-modal" class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="document-loading" class="loading-message">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading document...</p>
+                </div>
+                <div id="document-error" class="error-message" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Document not found. Please contact for the document.</p>
+                </div>
+                <iframe id="document-frame" class="document-frame" style="display: none;"></iframe>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

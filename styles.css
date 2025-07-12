@@ -415,7 +415,7 @@ section:nth-child(even) {
   margin-bottom: var(--spacing-lg);
 }
 
-.download-link {
+.view-document-link {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-sm);
@@ -423,9 +423,10 @@ section:nth-child(even) {
   text-decoration: none;
   font-weight: 500;
   transition: all var(--transition-fast);
+  margin-top: var(--spacing-sm);
 }
 
-.download-link:hover {
+.view-document-link:hover {
   color: var(--secondary-color);
   transform: translateX(5px);
 }
@@ -744,6 +745,203 @@ section:nth-child(7) { animation-delay: 0.7s; }
   outline-offset: 2px;
 }
 
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+  display: block;
+}
+
+.modal-content {
+  background-color: var(--card-background);
+  margin: 2% auto;
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 1200px;
+  height: 90vh;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--background-tertiary);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.modal-header h3 {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.modal-controls {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.modal-controls .download-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.9rem;
+}
+
+.modal-controls .download-btn:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.close-btn {
+  background: none;
+  border: 2px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.modal-body {
+  flex: 1;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.document-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: var(--radius-md);
+  background: white;
+}
+
+.loading-message,
+.error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-secondary);
+  gap: var(--spacing-md);
+}
+
+.loading-message i {
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+.error-message i {
+  font-size: 3rem;
+  color: var(--accent-color);
+}
+
+.loading-message p,
+.error-message p {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Modal Responsive Design */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    height: 95vh;
+    margin: 2.5% auto;
+  }
+  
+  .modal-header {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+  
+  .modal-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .modal-controls {
+    gap: var(--spacing-sm);
+  }
+  
+  .modal-controls .download-btn {
+    padding: var(--spacing-sm);
+    font-size: 0.8rem;
+  }
+  
+  .modal-body {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 98%;
+    height: 98vh;
+    margin: 1% auto;
+  }
+  
+  .modal-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .modal-controls .download-btn span {
+    display: none;
+  }
+}
+
 /* Print styles for PDF generation */
 @media print {
   .header,
@@ -766,5 +964,9 @@ section:nth-child(7) { animation-delay: 0.7s; }
   .skill-category,
   .milestone-item {
     break-inside: avoid;
+  }
+  
+  .modal {
+    display: none !important;
   }
 }

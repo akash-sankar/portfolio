@@ -8,7 +8,7 @@ A modern, responsive single-page portfolio website designed for academic and pro
 - **Single-page design** with smooth scroll navigation
 - **Responsive layout** optimized for desktop, tablet, and mobile devices
 - **Dark/Light theme toggle** with persistent user preference
-- **PDF download** functionality to export the entire portfolio
+- **Document viewer modal** for displaying project reports and certificates
 - **Smooth scroll animations** using Intersection Observer API
 - **Professional academic styling** suitable for engineering contexts
 
@@ -42,10 +42,15 @@ A modern, responsive single-page portfolio website designed for academic and pro
 ### File Structure
 ```
 portfolio/
-├── index.html          # Main HTML structure
-├── styles.css          # Complete styling and responsive design
-├── script.js           # JavaScript functionality
-└── README.md          # Documentation
+├── index.html              # Main HTML structure
+├── styles.css              # Complete styling and responsive design
+├── script.js               # JavaScript functionality
+├── README.md               # Main documentation
+├── DOCUMENTS_GUIDE.md      # Document management guide
+├── reports/                # Project reports (PDF files)
+│   └── README.md          # Instructions for adding reports
+└── certificates/           # Course certificates (PDF files)
+    └── README.md          # Instructions for adding certificates
 ```
 
 ## 🎨 Customization Guide
@@ -163,7 +168,7 @@ const opt = {
 - **CSS3** - Modern styling with custom properties
 - **Vanilla JavaScript** - No framework dependencies
 - **Font Awesome** - Professional icons
-- **html2pdf.js** - PDF generation functionality
+- **PDF.js** - Built-in browser PDF viewing (via iframe)
 
 ### Browser Support
 - Chrome 70+
@@ -180,23 +185,59 @@ const opt = {
 - Color contrast compliance
 - Screen reader friendly
 
-## 📊 Project Reports Setup
+## 📊 Document Management System
 
-To enable actual PDF downloads for projects:
+The portfolio includes a sophisticated document viewer for project reports and certificates:
 
-1. Create a `reports/` directory
-2. Add your PDF files with appropriate names
-3. Update the `handleProjectDownload` function in `script.js`:
+### Document Viewer Features
+- **Full-screen modal** with embedded PDF viewer
+- **Download functionality** for each document
+- **Loading states** and error handling
+- **Responsive design** for mobile devices
+- **Keyboard shortcuts** (Escape to close)
 
-```javascript
-handleProjectDownload(projectName) {
-    const downloadUrl = `/reports/${projectName}.pdf`;
-    const link = document.createElement('a');
-    link.href = downloadUrl;
-    link.download = `${projectName}-report.pdf`;
-    link.click();
-}
-```
+### Adding Your Documents
+
+1. **Create directory structure** (already included):
+   ```
+   portfolio/
+   ├── reports/           # Project reports
+   ├── certificates/      # Course certificates
+   ```
+
+2. **Add PDF files** with specific naming:
+   ```
+   reports/
+   ├── indoor-rover.pdf
+   ├── vaps-analysis.pdf
+   ├── audio-preamp.pdf
+   ├── pacemaker.pdf
+   └── streetlight.pdf
+   
+   certificates/
+   ├── qualcomm-verification.pdf
+   ├── nptel-python.pdf
+   └── nptel-verilog.pdf
+   ```
+
+3. **Enable document loading** in `script.js`:
+   ```javascript
+   // Change this line:
+   const documentExists = false;
+   
+   // To this:
+   const documentExists = true;
+   ```
+
+4. **Test the functionality** by clicking "View Report" or "View Certificate" buttons
+
+### Document Requirements
+- **Format**: PDF files only
+- **Size**: Under 10MB recommended for web performance
+- **Quality**: High resolution for professional presentation
+- **Naming**: Must match the exact naming convention
+
+**See `DOCUMENTS_GUIDE.md` for detailed instructions.**
 
 ## 🚀 Deployment Options
 
